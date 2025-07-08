@@ -1,6 +1,7 @@
 
 import os
 import environ
+from pathlib import Path
 
 env = environ.Env()
 environ.Env.read_env()
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # custom additions
+    "django_vite",
     "accounts.apps.AccountsConfig",
 ]
 
@@ -125,10 +127,16 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
+    os.path.join(BASE_DIR,    "static"),  
 ]
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
+print("STATIC ROOT: ", STATIC_ROOT)
+print("STATIC URL: ", STATIC_URL)
+print("STATIC FILE DIRS: ", STATICFILES_DIRS)
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -176,3 +184,10 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+# Location of the built manifest.json file
+DJANGO_VITE_MANIFEST_PATH = os.path.join(BASE_DIR, "static", "web", ".vite", "manifest.json")
+
+
+# Vite-built assets are served under this path
+DJANGO_VITE_STATIC_URL_PREFIX = "web/"
