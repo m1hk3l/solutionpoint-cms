@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 const Test = () => {
   return (
-    <div style={{ color: "red", fontSize: "2rem", textAlign: "center" }}>
+    <div style={{ color: "red", fontSize: "20rem", textAlign: "center" }}>
       Test
     </div>
   );
